@@ -10,35 +10,39 @@ public class HomeController {
         }
     @GetMapping("/about")
     public String about(){
-        return "about";
+        return "home/about";
     }
     @GetMapping("/shop")
     public String shop(){
-            return "shop";
+            return "home/shop";
     }
     @GetMapping("/service")
     public String service(){
-        return "service";
+        return "home/service";
     }
     @GetMapping("/blog")
     public String blog(){
-        return "blog";
+        return "home/blog";
     }
     @GetMapping("/contact")
     public String contact(){
-        return "contact";
+        return "home/contact";
     }
     @GetMapping("/cart")
     public String cart(){
-        return "cart";
+        return "home/cart";
     }
     @GetMapping("/checkout")
     public String checkout(){
-        return "checkout";
+        return "home/checkout";
     }
     @GetMapping("/thankyou")
     public String thankyou(){
-        return "thankyou";
+        return "home/thankyou";
+    }
+    @GetMapping("/admin")
+    public String admin(){
+            return "admin";
     }
 
 }
