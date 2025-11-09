@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h6 class="m-0 font-weight-bold text-primary">Chi tiết Sản phẩm</h6>
+                <button class="btn btn-success btn-sm">
+                    <i class="fas fa-plus"></i> Thêm Sản phẩm
+                </button>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ảnh</th>
+                            <th>Tên Sản phẩm</th>
+                            <th>Giá (USD)</th>
+                            <th>Kho</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>#1001</td>
+                            <td>
+                                <img src="images/iphone-16-pro-max-sa-mac-thumb-1-600x600-removebg-preview.png" alt="iPhone 16 Pro Max Vàng" class="product-thumb">
+                            </td>
+                            <td>iPhone 16 Pro Max (Vàng)</td>
+                            <td>1,599</td>
+                            <td>50</td>
+                            <td><span class="badge bg-success text-white">Còn hàng</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info me-2"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#1002</td>
+                            <td>
+                                <img src="images/iphone-15-plus-vang-126gb-thumb-600x600-removebg-preview.png" alt="iPhone 15 Plus Vàng" class="product-thumb">
+                            </td>
+                            <td>iPhone 15 Plus (Vàng Nhạt)</td>
+                            <td>999</td>
+                            <td>85</td>
+                            <td><span class="badge bg-success text-white">Còn hàng</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info me-2"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#1003</td>
+                            <td>
+                                <img src="images/iphone-13-midnight-2-600x600-removebg-preview.png" alt="iPhone 13 Midnight" class="product-thumb">
+                            </td>
+                            <td>iPhone 13 (Midnight Blue)</td>
+                            <td>699</td>
+                            <td>0</td>
+                            <td><span class="badge bg-danger text-white">Hết hàng</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info me-2"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#1004</td>
+                            <td>
+                                <img src="images/iphone-17-pro-max-cam-thumb-600x600-removebg-preview.png" alt="iPhone 17 Pro Max Cam" class="product-thumb">
+                            </td>
+                            <td>iPhone 17 Pro Max (Cam)</td>
+                            <td>1,699</td>
+                            <td>20</td>
+                            <td><span class="badge bg-success text-white">Còn hàng</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info me-2"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#1005</td>
+                            <td>
+                                <img src="images/iPhone-14-plus-thumb-xanh-600x600-removebg-preview.png" alt="iPhone 14 Plus Xanh" class="product-thumb">
+                            </td>
+                            <td>iPhone 14 Plus (Blue)</td>
+                            <td>899</td>
+                            <td>120</td>
+                            <td><span class="badge bg-success text-white">Còn hàng</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info me-2"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
