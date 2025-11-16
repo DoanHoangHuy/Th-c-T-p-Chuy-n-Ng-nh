@@ -8,7 +8,61 @@
 </head>
 <body>
 <div layout:fragment="content">
-<h1>Đây là product_list</h1>
+    <div class="main-content-area">
+        <h2 class="product-list-title">Product List</h2>
+
+        <div class="product-header">
+            <button class="add-new-btn"><i class="fa-solid fa-plus"></i> Thêm sản phẩm mới</button>
+        </div>
+
+        <table class="product-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Danh mục</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td><img src="iphone-15-xanh-thumb-600x600-removebg-preview.png" alt="iPhone 15" class="product-img"></td>
+                <td>iPhone 15</td>
+                <td>20.000.000 VND</td>
+                <td>iPhone Mới</td>
+                <td class="actions">
+                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
+                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><img src="iphone-16-blue-600x600-removebg-preview.png" alt="iPhone 16" class="product-img"></td>
+                <td>iPhone 16</td>
+                <td>25.000.000 VND</td>
+                <td>iPhone Mới</td>
+                <td class="actions">
+                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
+                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><img src="iphone-16-pro-max-sa-mac-thumb-1-600x600-removebg-preview.png" alt="iPhone 16 Pro Max" class="product-img"></td>
+                <td>iPhone 16 Pro Max</td>
+                <td>35.000.000 VND</td>
+                <td>iPhone Pro</td>
+                <td class="actions">
+                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
+                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

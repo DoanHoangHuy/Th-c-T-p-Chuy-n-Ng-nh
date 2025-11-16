@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="main-content-area">
+        <h2 class="order-list-title">Order List</h2>
+
+        <div class="order-filters">
+            <label for="status-filter">Lọc theo Trạng thái:</label>
+            <select id="status-filter" class="filter-select">
+                <option value="all">Tất cả</option>
+                <option value="pending">Chờ xác nhận</option>
+                <option value="processing">Đang xử lý</option>
+                <option value="shipped">Đang giao</option>
+                <option value="delivered">Đã giao</option>
+                <option value="cancelled">Đã hủy</option>
+            </select>
+            <button class="filter-btn"><i class="fa-solid fa-filter"></i> Áp dụng</button>
+        </div>
+
+        <table class="order-table">
+            <thead>
+            <tr>
+                <th>ID Đơn hàng</th>
+                <th>Khách hàng</th>
+                <th>Ngày đặt</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>#ORD001</td>
+                <td>Nguyễn Văn A</td>
+                <td>10/11/2025</td>
+                <td class="amount">20.000.000 VND</td>
+                <td><span class="status-badge pending">Chờ xác nhận</span></td>
+                <td class="actions">
+                    <button class="action-btn detail-btn"><i class="fa-solid fa-eye"></i> Xem</button>
+                    <button class="action-btn process-btn"><i class="fa-solid fa-check"></i> Xử lý</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#ORD002</td>
+                <td>Trần Thị B</td>
+                <td>09/11/2025</td>
+                <td class="amount">45.000.000 VND</td>
+                <td><span class="status-badge delivered">Đã giao</span></td>
+                <td class="actions">
+                    <button class="action-btn detail-btn"><i class="fa-solid fa-eye"></i> Xem</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#ORD003</td>
+                <td>Lê Hoàng C</td>
+                <td>08/11/2025</td>
+                <td class="amount">15.000.000 VND</td>
+                <td><span class="status-badge cancelled">Đã hủy</span></td>
+                <td class="actions">
+                    <button class="action-btn detail-btn"><i class="fa-solid fa-eye"></i> Xem</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#ORD004</td>
+                <td>Phạm Văn D</td>
+                <td>07/11/2025</td>
+                <td class="amount">28.000.000 VND</td>
+                <td><span class="status-badge processing">Đang xử lý</span></td>
+                <td class="actions">
+                    <button class="action-btn detail-btn"><i class="fa-solid fa-eye"></i> Xem</button>
+                    <button class="action-btn shipped-btn"><i class="fa-solid fa-truck"></i> Giao hàng</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

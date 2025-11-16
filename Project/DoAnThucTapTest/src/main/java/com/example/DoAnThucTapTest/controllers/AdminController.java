@@ -13,4 +13,8 @@ public class AdminController {
     public String productList(){
         return "admin/products/product-list";
     }
+    @GetMapping("/admin/cart")
+    public String cartList(){
+        return "admin/cart/cart-list";
+    }
 }
