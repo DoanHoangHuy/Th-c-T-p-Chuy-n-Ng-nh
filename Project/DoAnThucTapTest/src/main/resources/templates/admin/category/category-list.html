@@ -4,71 +4,42 @@
       layout:decorate="~{admin/layout}">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <title>Category</title>
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="main-content-area">
-        <h2 class="category-list-title">Category</h2>
-
-        <div class="category-header">
-            <button class="add-new-btn"><i class="fa-solid fa-plus"></i> Thêm danh mục mới</button>
-        </div>
-
-        <table class="category-table">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tên danh mục</th>
-                <th>Mô tả</th>
-                <th>Số lượng sản phẩm</th>
-                <th>Hành động</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>iPhone Mới</td>
-                <td>Các dòng iPhone mới nhất, ra mắt trong năm nay.</td>
-                <td>15</td>
-                <td class="actions">
-                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
-                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>iPhone Pro</td>
-                <td>Các phiên bản iPhone Pro và Pro Max cao cấp.</td>
-                <td>8</td>
-                <td class="actions">
-                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
-                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>iPhone Cũ</td>
-                <td>Các dòng iPhone đã qua sử dụng hoặc các phiên bản cũ hơn.</td>
-                <td>22</td>
-                <td class="actions">
-                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
-                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Phụ kiện iPhone</td>
-                <td>Các loại phụ kiện như ốp lưng, sạc, tai nghe.</td>
-                <td>30</td>
-                <td class="actions">
-                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
-                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+   <div class="container">
+       <div class="row">
+           <a th:href="@{/admin/category/Category-insert-form}"><i class="btn btn-primary">Insert</i></a>
+       </div>
+       <div class="row">
+           <table class="table">
+               <thead>
+               <tr class="align-middle text-center">
+                   <th scope="col">ID</th>
+                   <th scope="col">NAME</th>
+                   <th scope="col">IMAGE</th>
+                   <th scope="col">STATUS</th>
+                   <th scope="col">OPERATION</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr class="align-middle text-center" th:each="category : ${categories}">
+                   <th scope="row" th:text="${category.id}"></th>
+                   <td th:text="${category.name}"></td>
+                   <td style="width: 150px;"> <img th:src="${category.image}" alt="Category Image" style="max-width: 100px; height: auto;">
+                   </td>
+                   <td th:text="${category.status}"></td>
+                   <td>
+                       <a th:href="@{/admin/category/Category-edit-form(id=${category.id})}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                       <a th:href="@{/admin/category/delete(id=${category.id})}" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
+                   </td>
+               </tr>
+               </tbody>
+           </table>
+       </div>
+   </div>
 </div>
 </body>
 </html>

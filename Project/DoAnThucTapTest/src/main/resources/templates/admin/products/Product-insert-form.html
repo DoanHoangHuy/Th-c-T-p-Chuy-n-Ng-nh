@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-5">
+        <h2>INSERT PRODUCT</h2>
+        <hr>
+        <form th:action="@{/admin/products/save}" th:object="${product}" method="POST" enctype="multipart/form-data">
+
+            <input type="hidden" th:field="*{id}">
+
+            <div class="mb-3">
+                <label for="productTitle" class="form-label">Title</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="productTitle"
+                        th:field="*{title}"
+                        maxlength="255"
+                        required>
+            </div>
+
+            <div class="mb-3">
+                <label for="productImage" class="form-label">Image</label>
+                <input
+                        type="text"
+                        class="form-control"
+                        id="productImage"
+                        th:field="*{image}"
+                        maxlength="255">
+            </div>
+
+            <div class="mb-3">
+                <label for="productDescription" class="form-label">Description</label>
+                <textarea
+                        class="form-control"
+                        id="productDescription"
+                        th:field="*{description}"
+                        rows="2"
+                        maxlength="255"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="productContent" class="form-label">Content</label>
+                <textarea
+                        class="form-control"
+                        id="productContent"
+                        th:field="*{content}"
+                        rows="4"
+                        maxlength="255"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="productPrice" class="form-label">Price</label>
+                    <input
+                            type="number"
+                            class="form-control"
+                            id="productPrice"
+                            th:field="*{price}"
+                            step="0.01"
+                            min="0"
+                            required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="productCategory" class="form-label">Category</label>
+                    <select
+                            class="form-control"
+                            id="productCategory"
+                            th:field="*{id_cate}"
+                            required>
+                        <option value="1">
+                            Category 1
+                        </option>
+                        <option value="2">
+                            Category 2
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="productStatus" class="form-label">Status</label>
+                <select
+                        class="form-control"
+                        id="productStatus"
+                        th:field="*{status}"
+                        required>
+                    <option value="1">On</option>
+                    <option value="0">Off</option>
+                </select>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-3">
+                <button type="submit" class="btn btn-primary me-md-2">
+                    <i class="fa-solid fa-save"></i> Save
+                </button>
+                <a th:href="@{/admin/products/product-list}" class="btn btn-secondary">
+                    <i class="fa-solid fa-xmark"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

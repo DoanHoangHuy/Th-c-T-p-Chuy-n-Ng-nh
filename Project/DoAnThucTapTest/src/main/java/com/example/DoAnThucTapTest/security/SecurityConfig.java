@@ -6,29 +6,30 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfig {
-@Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails huy = User.builder().username("huy")
-                                    .password("{noop}123")
-                                    .roles("EMPLOYEE")
-                                    .build();
-        return new InMemoryUserDetailsManager(huy);
+
+    @Bean
+    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+        return new JdbcUserDetailsManager(dataSource);
     }
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer->configurer
-                        .requestMatchers("/css/**", "/js/**", "/vendor/**").permitAll()
-                                .anyRequest()
-                                .authenticated())
-                        .formLogin(form->form
+                                .requestMatchers("/css/**", "/js/**", "/vendor/**" ,"/images/**").permitAll()
+                                .requestMatchers("/admin/**").hasRole("MANAGER")
+                        .requestMatchers("/user/**").hasAnyRole("USER","ADMIN")
+                                .anyRequest().permitAll())
+                                .formLogin(form->form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/authenticateTheUser").permitAll())
-                        .logout(logout->logout
-                                .permitAll());
+                                .logout(logout->logout.permitAll());
         return http.build();
     }
 }

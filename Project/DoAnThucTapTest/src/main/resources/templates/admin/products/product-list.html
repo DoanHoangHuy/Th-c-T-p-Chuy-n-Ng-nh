@@ -4,64 +4,50 @@
       layout:decorate="~{admin/layout}">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <title>Product</title>
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="main-content-area">
-        <h2 class="product-list-title">Product List</h2>
-
-        <div class="product-header">
-            <button class="add-new-btn"><i class="fa-solid fa-plus"></i> Thêm sản phẩm mới</button>
+    <div class="container">
+        <div class="row">
+            <a th:href="@{/admin/products/Product-insert-form}"><i class="btn btn-primary">Insert</i></a>
         </div>
-
-        <table class="product-table">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Ảnh</th>
-                <th>Tên sản phẩm</th>
-                <th>Giá</th>
-                <th>Danh mục</th>
-                <th>Hành động</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td><img src="iphone-15-xanh-thumb-600x600-removebg-preview.png" alt="iPhone 15" class="product-img"></td>
-                <td>iPhone 15</td>
-                <td>20.000.000 VND</td>
-                <td>iPhone Mới</td>
-                <td class="actions">
-                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
-                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><img src="iphone-16-blue-600x600-removebg-preview.png" alt="iPhone 16" class="product-img"></td>
-                <td>iPhone 16</td>
-                <td>25.000.000 VND</td>
-                <td>iPhone Mới</td>
-                <td class="actions">
-                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
-                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><img src="iphone-16-pro-max-sa-mac-thumb-1-600x600-removebg-preview.png" alt="iPhone 16 Pro Max" class="product-img"></td>
-                <td>iPhone 16 Pro Max</td>
-                <td>35.000.000 VND</td>
-                <td>iPhone Pro</td>
-                <td class="actions">
-                    <button class="action-btn edit-btn"><i class="fa-solid fa-pen-to-square"></i> Sửa</button>
-                    <button class="action-btn delete-btn"><i class="fa-solid fa-trash-can"></i> Xóa</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr class="align-middle text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">IMAGE</th>
+                    <th scope="col">TILTE</th>
+                    <th scope="col">DISCRIPTION</th>
+                    <th scope="col">CONTENT</th>
+                    <th scope="col">PRICE</th>
+                    <th scope="col">CATE</th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">OPERATION</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="align-middle text-center" th:each="product : ${products}">
+                    <th scope="row" th:text="${product.id}"></th>
+                    <td style="width: 150px;"> <img th:src="${product.image}" alt="Category Image" style="max-width: 100px; height: auto;">
+                    </td>
+                    <td th:text="${product.title}"></td>
+                    <td th:text="${product.description}"></td>
+                    <td th:text="${product.content}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.id_cate}"></td>
+                    <td th:text="${product.status}"></td>
+                    <td>
+                    <td>
+                        <a th:href="@{/admin/products/Product-edit-form(id=${product.id})}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a th:href="@{/admin/products/delete(id=${product.id})}" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 </body>
