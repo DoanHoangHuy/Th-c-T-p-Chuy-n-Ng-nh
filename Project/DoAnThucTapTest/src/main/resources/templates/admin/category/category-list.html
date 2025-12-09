@@ -30,9 +30,10 @@
                    <td th:text="${category.name}"></td>
                    <td style="width: 150px;"> <img th:src="${category.image}" alt="Category Image" style="max-width: 100px; height: auto;">
                    </td>
-                   <td th:text="${category.status}"></td>
+                   <td th:text="${category.status} ? 'On' : 'Off'" th:class="${category.status} ? 'text-success' : 'text-danger'"></td>
                    <td>
-                       <a th:href="@{/admin/category/Category-edit-form(id=${category.id})}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                       <a href="" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+                       <a th:href="@{/admin/category/Category-edit-form(id=${category.id})}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
                        <a th:href="@{/admin/category/delete(id=${category.id})}" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
                    </td>
                </tr>

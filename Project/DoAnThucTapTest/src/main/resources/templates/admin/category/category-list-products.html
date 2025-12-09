@@ -25,7 +25,6 @@
                     <th scope="col">PRICE</th>
                     <th scope="col">CATE</th>
                     <th scope="col">STATUS</th>
-                    <th scope="col">OPERATION</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,10 +38,6 @@
                     <td th:text="${product.price}"></td>
                     <td th:text="${product.id_cate.name}"></td>
                     <td th:text="${product.status} ? 'On' : 'Off'" th:class="${product.status} ? 'text-success' : 'text-danger'"></td>
-                    <td>
-                        <a th:href="@{/admin/products/Product-edit-form(id=${product.id})}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a th:href="@{/admin/products/delete(id=${product.id})}" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
-                    </td>
                 </tr>
                 </tbody>
             </table>

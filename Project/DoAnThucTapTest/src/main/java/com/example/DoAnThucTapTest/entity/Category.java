@@ -2,6 +2,9 @@ package com.example.DoAnThucTapTest.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "category")
 public class Category {
@@ -15,10 +18,30 @@ public class Category {
     private String image;
     @Column(name = "status")
     private int status;
+    @OneToMany(mappedBy = "id_cate", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Product> products;
 
     public Category() {
     }
 
+    public Category(List<Product> products) {
+        this.products = products;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+    public void add(Product tempProduct) {
+        if(products == null){
+            products = new ArrayList<Product>();
+        }
+        products.add(tempProduct);
+        tempProduct.setId_cate(this);
+    }
     public int getId() {
         return id;
     }

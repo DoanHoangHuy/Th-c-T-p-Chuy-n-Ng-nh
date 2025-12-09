@@ -18,8 +18,11 @@ public class Product {
     private String content;
     @Column(name = "price")
     private float price;
-    @Column(name = "id_cate")
-    private int id_cate;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}) // hoac Cascade.ALL
+    @JoinColumn(name = "id_cate")
+    private Category id_cate;
+
     @Column(name = "status")
     private int status;
 
@@ -74,11 +77,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getId_cate() {
+    public Category getId_cate() {
         return id_cate;
     }
 
-    public void setId_cate(int id_cate) {
+    public void setId_cate(Category id_cate) {
         this.id_cate = id_cate;
     }
 
@@ -90,7 +93,7 @@ public class Product {
         this.status = status;
     }
 
-    public Product(String title, String image, String description, String content, float price, int id_cate, int status) {
+    public Product( String title, String image, String description, String content, float price, Category id_cate, int status) {
         this.title = title;
         this.image = image;
         this.description = description;
