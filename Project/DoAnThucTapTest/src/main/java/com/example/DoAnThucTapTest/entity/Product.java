@@ -19,7 +19,7 @@ public class Product {
     @Column(name = "price")
     private float price;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}) // hoac Cascade.ALL
+    @ManyToOne
     @JoinColumn(name = "id_cate")
     private Category id_cate;
 

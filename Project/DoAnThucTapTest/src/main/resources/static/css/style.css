@@ -711,3 +711,34 @@ textarea {
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
 
+/* src/main/resources/static/css/style.css */
+
+.product-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+/* Hiệu ứng khi di chuột vào thẻ card */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Chỉnh lại ảnh bên trong cho đẹp */
+.product-card img {
+    padding: 10px;
+}
+.product-card .card-title {
+    /* 1. Thiết lập chiều cao cố định cho khoảng 2 dòng chữ */
+    min-height: 3rem;
+
+    /* 2. Nếu tên quá dài (3 dòng trở lên) thì tự động cắt bớt và thêm dấu ... */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;  /* Chỉ hiện tối đa 2 dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

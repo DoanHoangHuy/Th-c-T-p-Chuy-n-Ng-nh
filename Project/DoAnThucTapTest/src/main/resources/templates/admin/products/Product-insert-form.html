@@ -74,7 +74,7 @@
                     <select
                             class="form-control"
                             id="productCategory"
-                            th:field="*{id_cate}"
+                            th:field="*{id_cate.id}"
                             required>
                         <option th:each="cate : ${cateList}"
                                 th:value="${cate.id}"

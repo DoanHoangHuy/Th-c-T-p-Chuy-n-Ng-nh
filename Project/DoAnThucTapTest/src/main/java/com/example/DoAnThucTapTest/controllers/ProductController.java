@@ -32,8 +32,9 @@ public class ProductController {
     @GetMapping("/Product-insert-form")
     public String insertForm(Model model){
         Product product = new Product();
-        model.addAttribute("product", product);
+        product.setId_cate(new  Category());
 
+        model.addAttribute("product", product);
         List<Category> cateList = categoryServiceImp.findAll();
         model.addAttribute("cateList", cateList);
         return "admin/products/Product-insert-form";
