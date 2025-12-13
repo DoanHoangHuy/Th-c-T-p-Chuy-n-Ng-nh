@@ -9,5 +9,7 @@ public interface ProductDAO {
     Product findById(int id);
     Product save(Product product);
     void deleteById(int id);
-
+    List<Product> findByStatus(int status);
+    List<Product> findById_cateAndStatus(int id_cate, int status);
+    List<Product> findByCategoryIdAndBrandId(int id_cate, int id_brand, int status);
 }

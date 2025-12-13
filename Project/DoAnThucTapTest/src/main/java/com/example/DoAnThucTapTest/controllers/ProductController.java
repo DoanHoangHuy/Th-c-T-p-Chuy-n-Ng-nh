@@ -1,8 +1,10 @@
 package com.example.DoAnThucTapTest.controllers;
 
 import com.example.DoAnThucTapTest.dao.ProductDAO;
+import com.example.DoAnThucTapTest.entity.Brand;
 import com.example.DoAnThucTapTest.entity.Category;
 import com.example.DoAnThucTapTest.entity.Product;
+import com.example.DoAnThucTapTest.service.BrandServiceImp;
 import com.example.DoAnThucTapTest.service.CategoryService;
 import com.example.DoAnThucTapTest.service.CategoryServiceImp;
 import com.example.DoAnThucTapTest.service.ProductServiceImp;
@@ -22,6 +24,9 @@ public class ProductController {
     @Autowired
     private CategoryServiceImp categoryServiceImp;
 
+    @Autowired
+    private BrandServiceImp brandServiceImp;
+
     @GetMapping("/product-list")
     public String list(Model model){
         List<Product> products = productServiceImp.findAll();
@@ -33,10 +38,14 @@ public class ProductController {
     public String insertForm(Model model){
         Product product = new Product();
         product.setId_cate(new  Category());
+        product.setId_brand(new Brand());
 
         model.addAttribute("product", product);
         List<Category> cateList = categoryServiceImp.findAll();
         model.addAttribute("cateList", cateList);
+
+        List<Brand> brandList = brandServiceImp.findAll();
+        model.addAttribute("brandList", brandList);
         return "admin/products/Product-insert-form";
     }
 
@@ -47,6 +56,9 @@ public class ProductController {
 
         List<Category> cateList = categoryServiceImp.findAll();
         model.addAttribute("cateList", cateList);
+
+        List<Brand> brandList = brandServiceImp.findAll();
+        model.addAttribute("brandList", brandList);
         return "admin/products/Product-edit-form";
     }
 

@@ -35,4 +35,21 @@ public class ProductServiceImp implements ProductService {
     public void deleteById(int id) {
         productDAO.deleteById(id);
     }
+
+    @Override
+    public List<Product> findByStatus(int status) {
+        return productDAO.findByStatus(status);
+    }
+
+    @Override
+    public List<Product> findByCategoryId(int cateId) {
+        return productDAO.findById_cateAndStatus(cateId, 1);
+    }
+
+    @Override
+    public List<Product> findByCategoryIdAndBrandId(int id_cate, int id_brand, int status) {
+        return productDAO.findByCategoryIdAndBrandId(id_cate, id_brand, status);
+    }
+
+
 }

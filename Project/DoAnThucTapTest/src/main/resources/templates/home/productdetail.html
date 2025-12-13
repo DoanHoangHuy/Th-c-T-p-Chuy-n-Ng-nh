@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net/thymeleaf/layout"
+      layout:decorate="~{home/layout}">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${product.title} + ' - Detail'"></title>
+</head>
+<body>
+<div layout:fragment="main-content">
+
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0">
+                    <a th:href="@{/}" class="text-decoration-none text-dark">Home</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <a th:href="@{/shop-list}" class="text-decoration-none text-dark">Shop</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <strong class="text-black" th:text="${product.title}"></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <div class="col-md-6 text-center">
+                <div class="border rounded-3 p-3 shadow-sm bg-white">
+                    <img th:src="${product.image}"
+                         class="img-fluid"
+                         alt="Product Image"
+                         style="max-height: 500px; object-fit: contain;"/>
+                </div>
+            </div>
+
+            <div class="col-md-6 pl-md-5 mt-4 mt-md-0">
+
+                <span class="text-muted text-uppercase" th:text="${product.id_cate.name}">Category</span>
+
+                <h2 class="text-black display-5 fw-bold" th:text="${product.title}"></h2>
+
+                <p class="mb-4 text-danger fs-3 fw-bold"
+                   th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')} + ' đ'">
+                </p>
+
+                <div class="mb-4" th:if="${product.ram != null or product.rom != null}">
+                    <span class="fw-bold me-2">Configuration:</span>
+                    <span class="badge bg-secondary p-2 me-1" th:if="${product.ram != null}" th:text="'RAM: ' + ${product.ram}"></span>
+                    <span class="badge bg-secondary p-2" th:if="${product.rom != null}" th:text="'ROM: ' + ${product.rom}"></span>
+                </div>
+
+                <p class="mb-4 text-secondary" th:text="${product.description}"></p>
+
+                <div class="mb-5" >
+                    <div class="input-group mb-5" style="max-width: 200px;">
+                        <button class="btn btn-outline-secondary" type="button" onclick="decreaseQty()">-</button>
+                        <input type="text" class="form-control text-center" value="1" id="qtyInput"/>
+                        <button class="btn btn-outline-secondary" type="button" onclick="increaseQty()">+</button>
+                    </div>
+
+                    <button class="btn btn-dark btn-lg rounded-pill px-5 py-3">
+                        <i class="fa fa-shopping-cart me-2"></i> Buy
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="p-4 border rounded-3 bg-white shadow-sm">
+                    <h4 class="mb-3 border-bottom pb-2">Product Description</h4>
+
+                    <div class="text-secondary" th:utext="${product.content}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script th:inline="javascript">
+        /*<![CDATA[*/
+        function increaseQty() {
+            var input = document.getElementById('qtyInput');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decreaseQty() {
+            var input = document.getElementById('qtyInput');
+            var currentValue = parseInt(input.value);
+            // Bây giờ dấu > sẽ không gây lỗi nữa
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+            }
+        }
+        /*]]>*/
+    </script>
+</div>
+
+</body>
+</html>

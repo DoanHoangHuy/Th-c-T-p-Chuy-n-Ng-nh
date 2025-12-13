@@ -20,9 +20,10 @@
                     <th scope="col">ID</th>
                     <th scope="col">IMAGE</th>
                     <th scope="col">TILTE</th>
-                    <th scope="col">DISCRIPTION</th>
-                    <th scope="col">CONTENT</th>
+                    <th scope="col">RAM</th>
+                    <th scope="col">ROM</th>
                     <th scope="col">PRICE</th>
+                    <th scope="col">BRAND</th>
                     <th scope="col">CATE</th>
                     <th scope="col">STATUS</th>
                     <th scope="col">OPERATION</th>
@@ -34,9 +35,10 @@
                     <td style="width: 150px;"> <img th:src="${product.image}" alt="Category Image" style="max-width: 100px; height: auto;">
                     </td>
                     <td th:text="${product.title}"></td>
-                    <td th:text="${product.description}"></td>
-                    <td th:text="${product.content}"></td>
+                    <td th:text="${product.ram}"></td>
+                    <td th:text="${product.rom}"></td>
                     <td th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')} + ' đ'" class="fw-bold">0 đ</td>
+                    <td th:text="${product.id_brand.name}"></td>
                     <td th:text="${product.id_cate.name}"></td>
                     <td th:text="${product.status} ? 'On' : 'Off'" th:class="${product.status} ? 'text-success' : 'text-danger'"></td>
                     <td>

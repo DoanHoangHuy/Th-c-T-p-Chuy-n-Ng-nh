@@ -16,12 +16,20 @@ public class Product {
     private String description;
     @Column(name = "content")
     private String content;
+    @Column(name = "ram")
+    private String ram;
+    @Column(name = "rom")
+    private String rom;
     @Column(name = "price")
     private float price;
 
     @ManyToOne
     @JoinColumn(name = "id_cate")
     private Category id_cate;
+
+    @ManyToOne
+    @JoinColumn(name = "id_brand")
+    private Brand id_brand;
 
     @Column(name = "status")
     private int status;
@@ -85,6 +93,14 @@ public class Product {
         this.id_cate = id_cate;
     }
 
+    public Brand getId_brand() {
+        return id_brand;
+    }
+
+    public void setId_brand(Brand id_brand) {
+        this.id_brand = id_brand;
+    }
+
     public int getStatus() {
         return status;
     }
@@ -93,13 +109,30 @@ public class Product {
         this.status = status;
     }
 
-    public Product( String title, String image, String description, String content, float price, Category id_cate, int status) {
+    public String getRom() {
+        return rom;
+    }
+
+    public void setRom(String rom) {
+        this.rom = rom;
+    }
+
+    public String getRam() {
+        return ram;
+    }
+
+    public void setRam(String ram) {
+        this.ram = ram;
+    }
+
+    public Product(String title, String image, String description, String content, String ram, String rom, float price, Category id_cate, Brand id_brand, int status) {
         this.title = title;
         this.image = image;
         this.description = description;
         this.content = content;
         this.price = price;
         this.id_cate = id_cate;
+        this.id_brand = id_brand;
         this.status = status;
     }
 
@@ -111,8 +144,11 @@ public class Product {
                 ", image='" + image + '\'' +
                 ", description='" + description + '\'' +
                 ", content='" + content + '\'' +
+                ", ram='" + ram + '\'' +
+                ", rom='" + rom + '\'' +
                 ", price=" + price +
                 ", id_cate=" + id_cate +
+                ", id_brand=" + id_brand +
                 ", status=" + status +
                 '}';
     }

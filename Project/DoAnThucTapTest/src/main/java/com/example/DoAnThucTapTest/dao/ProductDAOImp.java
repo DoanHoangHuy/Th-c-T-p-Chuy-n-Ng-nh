@@ -48,4 +48,29 @@ public class ProductDAOImp implements ProductDAO {
         em.remove(em.find(Product.class, id));
     }
 
+    @Override
+    public List<Product> findByStatus(int status) {
+        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p WHERE p.status = :trangThai",
+                            Product.class);
+        query.setParameter("trangThai", status);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Product> findById_cateAndStatus(int id_cate, int status) {
+        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p WHERE p.id_cate.id = :idcate AND status = :status", Product.class);
+        query.setParameter("idcate", id_cate);
+        query.setParameter("status", status);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Product> findByCategoryIdAndBrandId(int id_cate, int id_brand, int status) {
+        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p WHERE p.id_cate.id = :idcate AND status = :status AND p.id_brand = :idbrand", Product.class);
+        query.setParameter("idcate", id_cate);
+        query.setParameter("status", status);
+        query.setParameter("idbrand", id_brand);
+        return query.getResultList();
+    }
+
 }

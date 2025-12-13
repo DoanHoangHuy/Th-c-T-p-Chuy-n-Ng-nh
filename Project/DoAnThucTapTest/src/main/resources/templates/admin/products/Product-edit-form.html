@@ -45,7 +45,28 @@
                         rows="2"
                         maxlength="255"></textarea>
             </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">RAM</label>
+                    <select class="form-control" th:field="*{ram}">
+                        <option value="">-- Select RAM --</option>
+                        <option value="8GB">8GB</option>
+                        <option value="12GB">12GB</option>
+                        <option value="16GB">16GB</option>
+                    </select>
+                </div>
 
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">ROM (Storage)</label>
+                    <select class="form-control" th:field="*{rom}">
+                        <option value="">-- Select ROM --</option>
+                        <option value="128GB">128GB</option>
+                        <option value="256GB">256GB</option>
+                        <option value="512GB">512GB</option>
+                        <option value="1TB">1TB</option>
+                    </select>
+                </div>
+            </div>
             <div class="mb-3">
                 <label for="productContent" class="form-label">Content</label>
                 <textarea
@@ -68,12 +89,26 @@
                             min="0"
                             required>
                 </div>
-
+                <div class="col-md-6 mb-3">
+                    <label for="productBrand" class="form-label">Brand</label>
+                    <select
+                            class="form-control"
+                            id="productBrand"
+                            th:field="*{id_brand.id}"
+                            required>
+                        <option th:each="brand : ${brandList}"
+                                th:value="${brand.id}"
+                                th:text="${brand.name}"
+                                th:selected="${product.id_brand != null and brand.id == product.id_brand.id}">
+                        </option>
+                    </select>
+                </div>
                 <div class="col-md-6 mb-3">
                     <label for="productCategory" class="form-label">Category</label>
                     <select
                             class="form-control"
                             id="productCategory"
+                            th:field="*{id_cate.id}"
                             required>
                         <option th:each="cate : ${cateList}"
                                 th:value="${cate.id}"

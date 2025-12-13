@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <title>Category</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <a th:href="@{/admin/brand/Brand-insert-form}"><i class="btn btn-primary">Insert</i></a>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr class="align-middle text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">IMAGE</th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">OPERATION</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="align-middle text-center" th:each="brand : ${brands}">
+                    <th scope="row" th:text="${brand.id}"></th>
+                    <td th:text="${brand.name}"></td>
+                    <td style="width: 150px;"> <img th:src="${brand.image}" alt="Brand Image" style="max-width: 100px; height: auto;">
+                    </td>
+                    <td th:text="${brand.status} ? 'On' : 'Off'" th:class="${brand.status} ? 'text-success' : 'text-danger'"></td>
+                    <td>
+                        <a href="" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+                        <a th:href="@{/admin/brand/Brand-edit-form(id=${brand.id})}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a th:href="@{/admin/brand/delete(id=${brand.id})}" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

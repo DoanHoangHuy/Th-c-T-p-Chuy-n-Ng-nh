@@ -9,4 +9,7 @@ public interface ProductService {
     Product findById(int id);
     Product save(Product product);
     void deleteById(int id);
+    List<Product> findByStatus(int status);
+    List<Product> findByCategoryId(int cateId);
+    List<Product> findByCategoryIdAndBrandId(int id_cate, int id_brand, int status);
 }
