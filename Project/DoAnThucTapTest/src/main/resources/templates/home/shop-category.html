@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net/thymeleaf/layout"
+      layout:decorate="~{home/layout}">
+<head>
+    <meta charset="UTF-8" />
+    <title>Shop Category</title>
+
+</head>
+<body>
+<div layout:fragment="main-content">
+    <div class="container mt-4">
+        <div class="row mb-5 justify-content-center">
+            <hr class="my-4">
+            <div class="col-12 text-center mb-4 mt-4">
+                <h3 class="fw-bold">Browse by Category</h3>
+            </div>
+            <hr class="my-4">
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <a th:href="@{/shop-list}" class="text-decoration-none">
+                    <div class="card h-100 border shadow-sm text-center py-3 cate-card">
+                        <div class="card-body">
+                            <i class="fas fa-th-large fa-5x mt-4 text-secondary" style="width: 120px; height: 120px; object-fit: contain;"></i>
+                            <h6 class="card-title text-dark fw-bold mt-4">All Products</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3 mb-4" th:each="cate : ${cateList}">
+                <a th:href="@{/shop-list(cateid=${cate.id})}" class="text-decoration-none">
+
+                    <div class="card h-100 border shadow-sm text-center py-3 cate-card"
+                         th:classappend="${currentId == cate.id} ? 'border-primary bg-light' : ''">
+
+                        <img th:if="${cate.image != null}"
+                             th:src="${cate.image}"
+                             class="mx-auto d-block mb-2"
+                             style="width: 180px; height: 180px; object-fit: contain;" alt="Cate Img"/>
+
+                        <i th:if="${cate.image == null}" class="fas fa-mobile-alt fa-3x mb-3 text-secondary"></i>
+
+                        <div class="card-body p-0">
+                            <h6 class="card-title text-dark fw-bold" th:text="${cate.name}"></h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

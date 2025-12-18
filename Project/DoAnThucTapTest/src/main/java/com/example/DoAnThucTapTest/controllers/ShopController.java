@@ -20,6 +20,13 @@ public class ShopController {
     @Autowired
     CategoryServiceImp categoryServiceImp;
 
+    @GetMapping("/categories")
+    public String showCategoryList(Model model) {
+        List<Category> cateList = categoryServiceImp.findAll();
+        model.addAttribute("cateList", cateList);
+
+        return "home/shop-category";
+    }
 
     @GetMapping("/shop-list")
     public String PorudctList(Model model, @RequestParam(name="cateid", required = false) Integer cateid) {

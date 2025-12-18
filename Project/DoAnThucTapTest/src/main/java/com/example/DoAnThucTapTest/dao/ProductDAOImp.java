@@ -72,5 +72,17 @@ public class ProductDAOImp implements ProductDAO {
         query.setParameter("idbrand", id_brand);
         return query.getResultList();
     }
+    @Override
+    public Long count() {
+        TypedQuery<Long> query = em.createQuery("SELECT count(p) FROM Product p", Long.class);
+        return query.getSingleResult();
+    }
 
+    @Override
+    public List<Product> findById_brandandStatus(int id_brand, int status) {
+        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p WHERE p.id_brand.id = :idbrand AND status = :status", Product.class);
+        query.setParameter("idbrand", id_brand);
+        query.setParameter("status", status);
+        return query.getResultList();
+    }
 }

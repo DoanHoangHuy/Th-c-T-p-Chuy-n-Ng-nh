@@ -40,10 +40,19 @@
                     <td th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')} + ' đ'" class="fw-bold">0 đ</td>
                     <td th:text="${product.id_brand.name}"></td>
                     <td th:text="${product.id_cate.name}"></td>
-                    <td th:text="${product.status} ? 'On' : 'Off'" th:class="${product.status} ? 'text-success' : 'text-danger'"></td>
+                    <td th:if="${product.status == 1}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-toggle-on text-success" viewBox="0 0 16 16">
+                        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
+                    </svg></td>
+                    <td th:unless="${product.status == 1}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-toggle-off text-danger" viewBox="0 0 16 16">
+                        <path d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5"/>
+                    </svg>
+                    </td>
                     <td>
                         <a th:href="@{/admin/products/Product-edit-form(id=${product.id})}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a th:href="@{/admin/products/delete(id=${product.id})}" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
+                        <a th:href="@{/admin/products/delete(id=${product.id})}"
+                           class="btn btn-danger"
+                           onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">
+                            <i class="fa-solid fa-delete-left"></i></a>
                     </td>
                 </tr>
                 </tbody>

@@ -35,4 +35,9 @@ public class CategoryServiceImp implements CategoryService{
     public void deleteById(int id){
         categoryDAO.deleteById(id);
     }
+
+    @Override
+    public Long count() {
+        return categoryDAO.count();
+    }
 }

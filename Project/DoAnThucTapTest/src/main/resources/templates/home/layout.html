@@ -15,6 +15,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link th:href="@{/css/tiny-slider.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <title>Home Layout</title>
 </head>
 
@@ -34,10 +36,8 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
-                <li><a class="nav-link" th:href="@{/shop-list}">Shop</a></li>
-                <li><a class="nav-link" th:href="@{/about}">About us</a></li>
+                <li><a class="nav-link" th:href="@{/categories}">Shop</a></li>
                 <li><a class="nav-link" th:href="@{/service}">Services</a></li>
-                <li><a class="nav-link" th:href="@{/blog}">Blog</a></li>
                 <li><a class="nav-link" th:href="@{/contact}">Contact us</a></li>
             </ul>
             <form class="d-flex" role="search">
@@ -45,7 +45,19 @@
             </form>
 
             <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li><a class="nav-link" href="/login"><img src="images/user.svg"></a></li>
+<!--                <li><a class="nav-link" href="/login"><img src="images/user.svg"></a></li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Account
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/login}">Login</a></li>
+                        <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+                        <li><a class="dropdown-item" th:href="@{/register}">Register</a></li>
+                        <li><a class="dropdown-item" th:href="@{/admin}">Admin</a></li>
+                    </ul>
+                </li>
+
                 <li><a class="nav-link" th:href="@{/cart}"><img src="images/cart.svg"></a></li>
             </ul>
         </div>

@@ -10,4 +10,5 @@ public interface BrandService {
     Brand findById(int id);
     Brand save(Brand brand);
     void deleteById(int id);
+    Long count();
 }

@@ -1,6 +1,7 @@
 package com.example.DoAnThucTapTest.service;
 
 import com.example.DoAnThucTapTest.dao.ProductDAO;
+import com.example.DoAnThucTapTest.dao.ProductDAOImp;
 import com.example.DoAnThucTapTest.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,16 @@ public class ProductServiceImp implements ProductService {
     @Override
     public List<Product> findByCategoryIdAndBrandId(int id_cate, int id_brand, int status) {
         return productDAO.findByCategoryIdAndBrandId(id_cate, id_brand, status);
+    }
+
+    @Override
+    public Long count() {
+        return productDAO.count();
+    }
+
+    @Override
+    public List<Product> findById_brandandStatus(int id_brand, int status) {
+        return productDAO.findById_brandandStatus(id_brand, status);
     }
 
 

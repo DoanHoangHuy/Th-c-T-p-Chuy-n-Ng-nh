@@ -31,6 +31,7 @@ public class ProductController {
     public String list(Model model){
         List<Product> products = productServiceImp.findAll();
         model.addAttribute("products", products);
+        model.addAttribute("activePage", "product");
         return "admin/products/product-list";
     }
 

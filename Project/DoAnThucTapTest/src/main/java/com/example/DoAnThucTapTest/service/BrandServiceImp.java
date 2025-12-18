@@ -35,4 +35,9 @@ public class BrandServiceImp implements BrandService {
     public void deleteById(int id) {
         brandDAO.deleteById(id);
     }
+
+    @Override
+    public Long count() {
+        return brandDAO.count();
+    }
 }

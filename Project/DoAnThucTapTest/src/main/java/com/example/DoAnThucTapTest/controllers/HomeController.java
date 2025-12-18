@@ -1,28 +1,34 @@
 package com.example.DoAnThucTapTest.controllers;
 
+import com.example.DoAnThucTapTest.entity.Category;
+import com.example.DoAnThucTapTest.entity.Product;
+import com.example.DoAnThucTapTest.service.CategoryServiceImp;
+import com.example.DoAnThucTapTest.service.ProductServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+
 @Controller
 public class HomeController {
-        @GetMapping("/")
-        public String index(){
-            return "index";
-        }
-    @GetMapping("/about")
-    public String about(){
-        return "home/about";
-    }
-    @GetMapping("/shop")
-    public String shop(){
-            return "home/shop";
+    @Autowired
+    ProductServiceImp productServiceImp;
+    @Autowired
+    CategoryServiceImp categoryServiceImp;
+
+    @GetMapping("/")
+    public String index(Model model){
+        List<Product> products = productServiceImp.findAll();
+        List<Category> cateList = categoryServiceImp.findAll();
+        model.addAttribute("cateList", cateList);
+        model.addAttribute("productList", products);
+        return "index";
     }
     @GetMapping("/service")
     public String service(){
         return "home/service";
-    }
-    @GetMapping("/blog")
-    public String blog(){
-        return "home/blog";
     }
     @GetMapping("/contact")
     public String contact(){
@@ -39,10 +45,6 @@ public class HomeController {
     @GetMapping("/thankyou")
     public String thankyou(){
         return "home/thankyou";
-    }
-    @GetMapping("/admin")
-    public String admin(){
-            return "admin";
     }
 
 }

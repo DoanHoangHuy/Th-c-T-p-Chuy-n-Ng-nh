@@ -48,4 +48,9 @@ public class CategoryDAOImp implements CategoryDAO {
     public void deleteById(int id) {
         em.remove(em.find(Category.class, id));
     }
+    @Override
+    public Long count() {
+        TypedQuery<Long> query = em.createQuery("SELECT count(c) FROM Category c", Long.class);
+        return query.getSingleResult();
+    }
 }

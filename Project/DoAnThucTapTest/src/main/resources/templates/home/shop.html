@@ -13,29 +13,6 @@
 <div layout:fragment="main-content">
     <div class="untree_co-section product-section before-footer-section">
         <div class="container">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class  ="container-fluid">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <select class="form-control w-auto"
-                                id="selectCate"
-                                aria-label="Select Category"
-                                onchange="window.location.href=this.value">
-
-                            <option th:value="@{/shop-list}"
-                                    th:selected="${currentId == null}">
-                                All Product
-                            </option>
-
-                            <option th:each="cate : ${cateList}"
-                                    th:value="@{/shop-list(cateid=${cate.id})}"
-                                    th:text="${cate.name}"
-                                    th:selected="${currentId == cate.id}">
-                            </option>
-
-                        </select>
-                    </div>
-                </div>
-            </nav>
             <hr class="my-4">
             <div class="row g-4">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3"
@@ -56,7 +33,6 @@
             </div>
         </div>
     </div>
-
 </div>
 </body>
 </html>

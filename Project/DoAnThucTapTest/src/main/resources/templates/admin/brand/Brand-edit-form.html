@@ -9,7 +9,15 @@
 <body>
 <div layout:fragment="content">
     <div class="container mt-5">
-        <h2> Edit Category</h2>
+        <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fa-solid fa-triangle-exclamation"></i> <span th:text="${error}"></span>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <hr>
+        <h2> Edit BRAND</h2>
         <hr>
         <form th:action="@{/admin/brand/save}" th:object="${brand}" method="POST" enctype="multipart/form-data">
 
@@ -52,7 +60,7 @@
                 <button type="submit" class="btn btn-primary me-md-2">
                     Save
                 </button>
-                <a th:href="@{/admin/brand/brand-list}" class="btn btn-secondary">
+                <a th:href="@{/admin/brand/brand-list}" class="btn btn-danger">
                     Cancel
                 </a>
             </div>

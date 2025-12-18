@@ -10,6 +10,26 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <span th:text="${error}"></span>
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fa-solid fa-check-circle"></i> <span th:text="${success}"></span>
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <a th:href="@{/admin/brand/Brand-insert-form}"><i class="btn btn-primary">Insert</i></a>
         </div>
@@ -30,11 +50,18 @@
                     <td th:text="${brand.name}"></td>
                     <td style="width: 150px;"> <img th:src="${brand.image}" alt="Brand Image" style="max-width: 100px; height: auto;">
                     </td>
-                    <td th:text="${brand.status} ? 'On' : 'Off'" th:class="${brand.status} ? 'text-success' : 'text-danger'"></td>
+                    <td th:if="${brand.status == 1}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-toggle-on text-success" viewBox="0 0 16 16">
+                        <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
+                    </svg></td>
+                    <td th:unless="${brand.status == 1}"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-toggle-off text-danger" viewBox="0 0 16 16">
+                        <path d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5"/>
+                    </svg></td>
                     <td>
-                        <a href="" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
                         <a th:href="@{/admin/brand/Brand-edit-form(id=${brand.id})}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a th:href="@{/admin/brand/delete(id=${brand.id})}" class="btn btn-danger"><i class="fa-solid fa-delete-left"></i></a>
+                        <a th:href="@{/admin/brand/delete(id=${brand.id})}"
+                           class="btn btn-danger"
+                           onclick="return confirm('Bạn có chắc chắn muốn xóa thương hiệu này?');">
+                            <i class="fa-solid fa-delete-left"></i></a>
                     </td>
                 </tr>
                 </tbody>

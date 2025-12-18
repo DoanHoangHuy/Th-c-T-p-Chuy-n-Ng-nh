@@ -742,3 +742,59 @@ textarea {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.cate-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+     border-color: #0d6efd !important; /* Màu xanh primary */
+     cursor: pointer;
+}
+.cate-card {
+      transition: all 0.3s ease;
+}
+/* Ẩn thanh cuộn trên Chrome/Safari/Edge */
+    #productList::-webkit-scrollbar {
+        display: none;
+    }
+    /* Ẩn thanh cuộn trên Firefox */
+    #productList {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+/* Nút mũi tên Trái */
+    .owl-nav .owl-prev {
+        position: absolute;
+        top: 35%;
+        left: -20px; /* Đẩy ra ngoài rìa trái */
+        background: #fff !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 50% !important;
+        width: 45px;
+        height: 45px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+    }
+    /* Nút mũi tên Phải */
+    .owl-nav .owl-next {
+        position: absolute;
+        top: 35%;
+        right: -20px; /* Đẩy ra ngoài rìa phải */
+        background: #fff !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 50% !important;
+        width: 45px;
+        height: 45px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+    }
+    /* Hiệu ứng khi di chuột vào nút */
+    .owl-nav button:hover {
+        background: #000000 !important; /* Đổi màu xanh khi hover */
+        transform: scale(1.1);
+    }
+    .owl-nav button:hover i {
+        color: white !important;
+    }

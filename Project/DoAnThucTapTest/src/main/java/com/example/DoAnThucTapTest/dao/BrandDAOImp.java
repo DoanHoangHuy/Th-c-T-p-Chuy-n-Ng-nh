@@ -49,4 +49,9 @@ public class BrandDAOImp implements BrandDAO {
     public void deleteById(int id) {
         em.remove(em.find(Brand.class, id));
     }
+    @Override
+    public Long count() {
+        TypedQuery<Long> query = em.createQuery("SELECT count(b) FROM Brand b", Long.class);
+        return query.getSingleResult();
+    }
 }
