@@ -40,16 +40,6 @@
                 <h3 class="fw-bold">Browse by Category</h3>
             </div>
             <hr class="my-4">
-            <div class="col-6 col-md-4 col-lg-3 mb-4">
-                <a th:href="@{/shop-list}" class="text-decoration-none">
-                    <div class="card h-100 border shadow-sm text-center py-3 cate-card">
-                        <div class="card-body">
-                            <i class="fas fa-th-large fa-5x mt-4 text-secondary" style="width: 120px; height: 120px; object-fit: contain;"></i>
-                            <h6 class="card-title text-dark fw-bold mt-4">All Products</h6>
-                        </div>
-                    </div>
-                </a>
-            </div>
 
             <div class="col-6 col-md-4 col-lg-3 mb-4" th:each="cate : ${cateList}">
                 <a th:href="@{/shop-list(cateid=${cate.id})}" class="text-decoration-none">

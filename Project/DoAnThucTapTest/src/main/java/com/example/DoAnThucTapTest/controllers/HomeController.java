@@ -20,7 +20,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model){
-        List<Product> products = productServiceImp.findAll();
+        List<Product> products = productServiceImp.findLatestProducts(6);
         List<Category> cateList = categoryServiceImp.findAll();
         model.addAttribute("cateList", cateList);
         model.addAttribute("productList", products);

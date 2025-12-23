@@ -39,7 +39,6 @@ public class ShopController {
         }
         List<Category> cateList =  categoryServiceImp.findAll();
         model.addAttribute("products", products);
-        model.addAttribute("cateList", cateList);
         model.addAttribute("currentId",cateid);
 
         return "home/shop";

@@ -62,5 +62,10 @@ public class ProductServiceImp implements ProductService {
         return productDAO.findById_brandandStatus(id_brand, status);
     }
 
+    @Override
+    public List<Product> findLatestProducts(int limit) {
+        return productDAO.findLatestProducts(limit);
+    }
+
 
 }

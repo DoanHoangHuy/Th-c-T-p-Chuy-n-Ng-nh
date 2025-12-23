@@ -14,4 +14,5 @@ public interface ProductService {
     List<Product> findByCategoryIdAndBrandId(int id_cate, int id_brand, int status);
     Long count();
     List<Product> findById_brandandStatus(int id_brand, int status);
+    List<Product> findLatestProducts(int limit);
 }

@@ -85,4 +85,15 @@ public class ProductDAOImp implements ProductDAO {
         query.setParameter("status", status);
         return query.getResultList();
     }
+
+    @Override
+    public List<Product> findLatestProducts(int limit) {
+        String jpql = "SELECT p FROM Product p ORDER BY p.id DESC";
+
+        TypedQuery<Product> query = em.createQuery(jpql, Product.class);
+
+        query.setMaxResults(limit);
+
+        return query.getResultList();
+    }
 }
