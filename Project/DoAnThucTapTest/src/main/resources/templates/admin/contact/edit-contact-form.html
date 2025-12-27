@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Status</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <h2>Update Status (Chi tiết liên hệ)</h2>
+        </div>
+        <div class="row">
+            <form th:action="@{/admin/contact/save-admin}" th:object="${contact}" method="POST">
+
+                <input type="hidden" th:field="*{id}">
+
+                <input type="hidden" th:field="*{sent_at}">
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="fw-bold" for="fname">First name</label>
+                            <input type="text" class="form-control bg-light" id="fname" th:field="*{firstname}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="fw-bold" for="lname">Last name</label>
+                            <input type="text" class="form-control bg-light" id="lname" th:field="*{lastname}" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label class="fw-bold" for="email">Email address</label>
+                    <input type="email" class="form-control bg-light" id="email" th:field="*{email}" readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label class="fw-bold" for="message">Message</label>
+                    <textarea class="form-control bg-light" id="message" rows="5" th:field="*{message}" readonly></textarea>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label class="fw-bold" for="time">Time Sent</label>
+                    <input type="text" class="form-control bg-light" id="time"
+                           th:value="${#dates.format(contact.sent_at, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+                </div>
+
+                <div class="form-group mt-3 mb-5 p-3 border rounded border-primary bg-white">
+                    <label class="fw-bold text-primary" for="status">Cập nhật trạng thái:</label>
+                    <select class="form-control" id="status" th:field="*{status}">
+                        <option value="0">No response yet</option>
+                        <option value="1">Has responded</option>
+                    </select>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
+                    <button type="submit" class="btn btn-primary me-md-2">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Change
+                    </button>
+                    <a th:href="@{/admin/contact/contact-list}" class="btn btn-secondary">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

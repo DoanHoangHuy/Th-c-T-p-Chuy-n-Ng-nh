@@ -20,7 +20,7 @@ public class CategoryDAOImp implements CategoryDAO {
 
     @Override
     public List<Category> findAll() {
-        TypedQuery<Category> query = em.createQuery( "FROM Category",
+        TypedQuery<Category> query = em.createQuery( "FROM Category ORDER BY id DESC",
                 Category.class);
         return query.getResultList();
     }

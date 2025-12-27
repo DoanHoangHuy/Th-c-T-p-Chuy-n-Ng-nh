@@ -20,7 +20,7 @@ public class ProductDAOImp implements ProductDAO {
 
     @Override
     public List<Product> findAll() {
-        TypedQuery<Product> query = em.createQuery("FROM Product", Product.class);
+        TypedQuery<Product> query = em.createQuery("FROM Product ORDER BY id DESC", Product.class);
         return query.getResultList();
     }
 
@@ -58,7 +58,7 @@ public class ProductDAOImp implements ProductDAO {
 
     @Override
     public List<Product> findById_cateAndStatus(int id_cate, int status) {
-        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p WHERE p.id_cate.id = :idcate AND status = :status", Product.class);
+        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p WHERE p.id_cate.id = :idcate AND status = :status ORDER BY id DESC" , Product.class);
         query.setParameter("idcate", id_cate);
         query.setParameter("status", status);
         return query.getResultList();

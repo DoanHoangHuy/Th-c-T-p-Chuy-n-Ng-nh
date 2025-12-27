@@ -1,6 +1,7 @@
 package com.example.DoAnThucTapTest.controllers;
 
 import com.example.DoAnThucTapTest.entity.Category;
+import com.example.DoAnThucTapTest.entity.Contact;
 import com.example.DoAnThucTapTest.entity.Product;
 import com.example.DoAnThucTapTest.service.CategoryServiceImp;
 import com.example.DoAnThucTapTest.service.ProductServiceImp;
@@ -31,7 +32,9 @@ public class HomeController {
         return "home/service";
     }
     @GetMapping("/contact")
-    public String contact(){
+    public String contact(Model model){
+        Contact contact = new Contact();
+        model.addAttribute("contact", contact);
         return "home/contact";
     }
     @GetMapping("/cart")

@@ -21,7 +21,7 @@ public class BrandDAOImp implements BrandDAO {
 
     @Override
     public List<Brand> findAll() {
-        TypedQuery<Brand> query = em.createQuery( "FROM Brand",
+        TypedQuery<Brand> query = em.createQuery( "FROM Brand ORDER BY id DESC",
                 Brand.class);
         return query.getResultList();
     }
